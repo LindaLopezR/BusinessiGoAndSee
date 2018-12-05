@@ -1,0 +1,43 @@
+/* --------------------------------- */
+/* --------------------------------- */
+/*             NAVBAR                */
+/* --------------------------------- */
+/* --------------------------------- */
+.navbar-center {
+  margin-left: 40vw !important;
+}
+
+/* --------------------------------- */
+/* --------------------------------- */
+/*            DASHBOARD              */
+/* --------------------------------- */
+/* --------------------------------- */
+.icon-stadistics {
+  margin: 2vh !important;
+}
+.general-statistics {
+  background: #002841;
+  padding: 2% 2% 0% 2%;
+  margin-bottom: 5vh;
+  color: #FFFFFF;
+}
+.line-title {
+  margin: 0% !important;
+}
+.number-stadistics {
+  margin-bottom: 0 !important;
+  font-size: 1.5em;
+}
+.tag-stadistics {
+  margin: 5vh 0;
+}
+/* ----- SECTION ITEM ----- */
+.audit-onTime {
+  font-size: 2em;
+}
+.line-item {
+  border: 1px solid #EEEEEE;
+}
+.title-main {
+  font-weight: bold;
+}

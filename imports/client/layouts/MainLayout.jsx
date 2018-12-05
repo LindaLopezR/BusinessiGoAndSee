@@ -1,49 +1,35 @@
 import React from 'react';
+import { Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 
 export const MainLayout = ({content}) => (
-  <div className='main-layout'>
-    <nav className="navbar navbar-inverse navbar-fixed-top">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </button>
-          <a className="navbar-brand">iGoAndSee</a>
-        </div>
+  <div>
+    <Navbar inverse collapseOnSelect fixedTop>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <a>iGoAndSee</a>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav pullRight>
+          <NavDropdown eventKey={1} title="Menu" id="navbar-collapse">
+            <MenuItem eventKey={1.1} href="/"><i className="dashboard icon"></i> Dashboard</MenuItem>
+            <MenuItem eventKey={1.2} href="/anotherAction">Another action</MenuItem>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
 
-        <div className="collapse navbar-collapse navbar-right " id="navbar-collapse">
-          <ul className="nav navbar-nav">
-            <li className="dropdown">
-              <a className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span className="caret"></span></a>
-              <ul className="dropdown-menu">
-                <li><a href="/">Action</a></li>
-                <li><a href="/anotherAction">Another action</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </nav>
-
-    <div className="container contentMain">
+    <div className="content-main container-fluid">
       {content}
     </div>
 
-    <footer>
-      <nav className="navbar navbar-inverse navbar-fixed-bottom">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <a className="navbar-brand navbar-center">
-              iGoAndSee
-            </a>
-          </div>
-        </div>
-      </nav>
-    </footer>
-    
+    <Navbar inverse fixedBottom>
+      <Navbar.Header>
+        <Navbar.Brand className="navbar-center">
+          <a>iGoAndSee</a>
+        </Navbar.Brand>
+      </Navbar.Header>
+    </Navbar>
   </div>
 )
