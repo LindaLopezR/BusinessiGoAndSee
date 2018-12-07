@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Tooltip, OverlayTrigger, Label, Panel, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import NoContent from '../views/NoContent';
 
 const data = [
   {id: 1, deparment: 'Sporting Goods Sporting Goods', completeDate: '49', audit: 4, tag:3},
@@ -92,6 +93,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    const showPanel = data.length > 0;
 
     return (
       <Grid>
@@ -138,7 +140,10 @@ class Dashboard extends Component {
         </Row>
 
         <Row>
-          <ItemSection data={data} />
+          {showPanel ? (
+            <ItemSection data={data} />
+          ) : <NoContent />}
+          
         </Row>
 
       </Grid>
