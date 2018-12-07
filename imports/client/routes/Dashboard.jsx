@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Tooltip, OverlayTrigger, Label, Panel } from 'react-bootstrap';
+import { Grid, Row, Col, Tooltip, OverlayTrigger, Label, Panel, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
-const numbers = [1, 2, 3, 4, 5, 6, 7];
+const data = [
+  {id: 1, deparment: 'Sporting Goods Sporting Goods', completeDate: '49', audit: 4, tag:3},
+  {id: 2, deparment: 'Sporting Goods', completeDate: '9',audit: 37, tag:345},
+  {id: 3, deparment: 'Sporting Goods', completeDate: '29', audit: 667, tag:353},
+];
 
 function TooltipStadistics({id, children, tooltip}) {
   return (
@@ -16,24 +20,24 @@ function TooltipStadistics({id, children, tooltip}) {
   )
 }
 
-function ListItem(props) {
-  return (
-    <Col sm={6} md={3}>
+function ItemSection(props) {
+  const panel = props.data.map((item) =>(
+    <Col sm={6} md={3} key={item.id}>
       <Panel>
-        <Panel.Heading>Sección {props.value}</Panel.Heading>
+        <Panel.Heading>{item.deparment}</Panel.Heading>
         <Panel.Body>
           <p className="title-main">Auditorias</p>
-          <p className="text-center"><span className="audit-onTime">46%</span><br />A tiempo</p>
+          <p className="text-center"><span className="audit-onTime">{item.completeDate}%</span><br />A tiempo</p>
           
           <h4 className="text-center">
             <TooltipStadistics tooltip="Auditorias creadas" id="tooltip-1">
-              <Label bsStyle="success"><i className="edit icon"></i> 1</Label>
+              <Label bsStyle="success"><i className="edit icon"></i> {item.audit}</Label>
             </TooltipStadistics>{' '}
             <TooltipStadistics tooltip="Auditorias tarde" id="tooltip-2">
-              <Label bsStyle="warning"><i className="warning sign icon"></i> 2343</Label>
+              <Label bsStyle="warning"><i className="warning sign icon"></i> {item.audit}</Label>
             </TooltipStadistics>{' '}
             <TooltipStadistics tooltip="Auditorias no realizadas" id="tooltip-3">
-              <Label bsStyle="danger"><i className="remove icon"></i> 5675</Label>
+              <Label bsStyle="danger"><i className="remove icon"></i> {item.audit}</Label>
             </TooltipStadistics>
           </h4>
 
@@ -41,32 +45,39 @@ function ListItem(props) {
           <p className="title-main">Tags</p>
           <h4 className="text-center">
             <TooltipStadistics tooltip="Tarjetas rojas creadas" id="tooltip-4">
-              <Label bsStyle="danger"><i className="edit icon"></i> 3455</Label>
+              <Label bsStyle="danger"><i className="edit icon"></i> {item.tag}</Label>
             </TooltipStadistics>{' '}
             <TooltipStadistics tooltip="Tarjetas amarillas creadas" id="tooltip-5">
-              <Label bsStyle="warning"><i className="edit icon"></i> 756</Label>
+              <Label bsStyle="warning"><i className="edit icon"></i> {item.tag}</Label>
             </TooltipStadistics>
           </h4>
         </Panel.Body>
       </Panel>
     </Col>
-  )
-}
-
-function SectionItem(props) {
-  const numbers = props.numbers;
-  const listItems = numbers.map((number) =>
-    <ListItem key={number.toString()} value={number} />
-  );
+  ))
 
   return (
-    <div className="row">
-      {listItems}
-    </div>
+    <Row>
+      {panel}
+    </Row>
   )
 }
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 'today'
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      value: event.target.value
+    });
+  }
 
   renderStadistics(icon, title) {
     const style = 'icon-stadistics big ' + (icon) + ' icon';
@@ -81,11 +92,21 @@ export default class Dashboard extends Component {
   }
 
   render() {
+
     return (
       <Grid>
         <Row className="show-grid">
           <Col md={8} mdOffset={2} className="general-statistics">
-            <h4>Últimos 7 días</h4>
+            <FormGroup controlId="formControlsSelect">
+              <ControlLabel>Estadisticas</ControlLabel>
+                <FormControl componentClass="select" value={this.state.value} onChange={this.handleChange}>
+                <option value="today">Hoy</option>
+                <option value="yesterday">Ayer</option>
+                <option value="week">Esta semana</option>
+                <option value="lastweek">Semana anterior</option>
+                <option value="month">Este mes</option>
+              </FormControl>
+            </FormGroup>
             <Row>
               <Col md={8}>
                 <p className="title-main">Auditorias</p>
@@ -116,9 +137,13 @@ export default class Dashboard extends Component {
           </Col>
         </Row>
 
-        <SectionItem numbers={numbers} />
+        <Row>
+          <ItemSection data={data} />
+        </Row>
 
       </Grid>
     )
   }
 }
+
+export default Dashboard;
