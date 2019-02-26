@@ -1,13 +1,37 @@
 body {
   background-color: #EFEFEF;
 }
+div {
+  font-size: 12px!important;
+}
 .content-main {
   margin: 10vh 0;
 }
 .navbar-center {
   margin-left: 40vw !important;
 }
-
+.MuiTableHead-root-29 {
+  background: #222222;
+}
+.MuiTableCell-head-36 { 
+  color: #FFFFFF !important;
+}
+.MuiTableCell-head-36,
+.MuiTableCell-body-37 {
+  text-align: center !important;
+  font-size: 1em!important;
+}
+.MuiToolbar-regular-134 span.MuiTypography-caption-146,
+.MuiToolbar-regular-134 .MuiInputBase-root-82 {
+  font-size: 1em !important;
+}
+.MuiTableSortLabel-active-48, 
+.MuiTableSortLabel-root-47:hover {
+  color: #9c9595 !important;
+}
+ul.MuiList-root-282 li {
+  font-size: 1em !important;
+}
 /* --------------------------------- */
 /* --------------------------------- */
 /*            NOCONTENT              */

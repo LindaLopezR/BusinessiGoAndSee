@@ -6,7 +6,7 @@ export const MainLayout = ({content}) => (
     <Navbar inverse collapseOnSelect fixedTop>
       <Navbar.Header>
         <Navbar.Brand>
-          <a>iGoAndSee</a>
+          <a href="/">iGoAndSee</a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
@@ -14,7 +14,7 @@ export const MainLayout = ({content}) => (
         <Nav pullRight>
           <NavDropdown eventKey={1} title="Menu" id="navbar-collapse">
             <MenuItem eventKey={1.1} href="/"><i className="dashboard icon"></i> Dashboard</MenuItem>
-            <MenuItem eventKey={1.2} href="/anotherAction">Another action</MenuItem>
+            <MenuItem eventKey={1.2} href="/audits"><i className="browser icon"></i> Auditorias</MenuItem>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

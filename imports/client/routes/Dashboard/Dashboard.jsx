@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Tooltip, OverlayTrigger, Label, Panel, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
-import NoContent from '../views/NoContent';
+import NoContent from '../../views/NoContent';
 
 const data = [
   {id: 1, deparment: 'Sporting Goods Sporting Goods', completeDate: '49', audit: 4, tag:3},

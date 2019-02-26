@@ -21,3 +21,4 @@ static-html
 kadira:flow-router
 semantic:ui-icon
 twbs:bootstrap
+semantic:ui-button
